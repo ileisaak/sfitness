@@ -1,0 +1,965 @@
+/* VARIABLES Y RESETEO */
+:root {
+    --pink: #ff57f9;
+    --dark: #1b1b1b;
+    --light: #f4f4f4;
+    --font-titles: 'Bebas Neue', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--dark);
+    background-color: var(--light);
+    overflow-x: hidden;
+}
+
+/* UTILIDADES */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-dark {
+    background-color: var(--dark);
+}
+
+.text-white {
+    color: #fff;
+}
+
+.text-pink {
+    color: var(--pink);
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.layout-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* BOTONES */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-pink {
+    background-color: var(--pink);
+    color: #fff;
+}
+
+.btn-dark {
+    background-color: var(--dark);
+    color: #fff;
+    width: max-content;
+    margin: 0 auto;
+    display: block;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* TIPOGRAFIA */
+h1,
+h2,
+h3,
+h4,
+.title-large,
+.huge-text {
+    font-family: var(--font-titles);
+    letter-spacing: 1px;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 2rem;
+    color: var(--pink);
+    margin-bottom: 10px;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+/* CLASE GLOBAL UNIFICADA PARA TÍTULOS GIGANTES RESPONSIVOS */
+.title-large {
+    font-size: clamp(4rem, 10vw, 7rem) !important;
+    line-height: 0.9;
+}
+
+/* 1. HERO SECTION */
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: visible;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    filter: grayscale(100%);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8));
+    z-index: -1;
+}
+
+/* --- MEDIO (Vista Celular) --- */
+.hero-middle {
+    position: absolute;
+    top: 8%;
+    left: 0;
+    width: 100%;
+    padding: 0 5%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.logo-col,
+.btn-col {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.subtitle-col {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    align-self: flex-start;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    max-height: 35px;
+    width: auto;
+}
+
+.hero-subtitle {
+    color: #fff;
+    text-align: left;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.btn-play {
+    background-color: var(--pink);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 40px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-family: var(--font-body);
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.btn-play:hover {
+    transform: scale(1.05);
+}
+
+/* --- ABAJO (Texto Gigante) --- */
+.hero-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 5%;
+    z-index: 1;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transform: translateY(25%);
+}
+
+.pre-title {
+    color: var(--pink);
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transform: translateY(-30px);
+}
+
+.hero-title {
+    font-size: 32vw;
+    color: #fff;
+    margin: 0;
+    line-height: 0.8;
+    text-align: center;
+    width: 100%;
+    letter-spacing: -2px;
+}
+
+.mobile-break {
+    display: block;
+}
+
+/* 2. ABOUT SECTION */
+.about {
+    position: relative;
+    z-index: 50;
+    background-color: var(--light);
+}
+
+.about-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-text h2 {
+    margin-bottom: 30px;
+    color: var(--dark);
+    letter-spacing: -1px;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    max-width: 95%;
+}
+
+.about-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.about-img img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    object-fit: cover;
+}
+
+/* 3. SERVICES SECTION */
+.services {
+    padding-bottom: 20px;
+    /* Cierra el gap con Glúteos */
+}
+
+.services .layout-grid {
+    display: flex;
+    flex-direction: column;
+}
+
+.services-title {
+    order: -1;
+    text-align: center;
+}
+
+.services-text {
+    text-align: center;
+    /* Centrado en Mobile */
+}
+
+.service-item {
+    margin-bottom: 30px;
+}
+
+.service-item ul {
+    text-align: left;
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   SECCIÓN GLÚTEOS (BENTO GRID EDGE-TO-EDGE)
+   ========================================================================== */
+.gluteos {
+    padding-top: 0;
+    overflow: hidden;
+}
+
+/* Wrapper que fuerza el 100% del ancho */
+.bento-wrapper-full {
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+}
+
+/* Grilla Base (Celulares) - 2 Columnas extendidas */
+.bento-grid-full {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    /* Gap bien pequeño estilo app */
+    padding: 0 8px;
+    /* Casi tocando el borde de la pantalla */
+    position: relative;
+    z-index: 1;
+}
+
+/* Ítems del Bento */
+.bento-item {
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #2a2a2a;
+    height: 220px;
+    /* Altura optimizada para celular */
+    position: relative;
+}
+
+.bento-item video,
+.bento-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.bento-item.horizontal {
+    grid-column: span 2;
+}
+
+.bento-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, var(--dark) 10%, transparent);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.bento-text {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 700px;
+    margin: -80px auto 60px auto;
+}
+
+.bento-text p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 1);
+}
+
+/* --- RESPONSIVE MEDIA QUERIES (DESKTOP) --- */
+@media (min-width: 768px) {
+
+    /* Grilla de 4 columnas en PC */
+    .bento-grid-full {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        padding: 0 15px;
+    }
+
+    .bento-item {
+        height: 300px;
+    }
+
+    /* Orden exacto para 8 elementos en 4 columnas */
+    .bento-item:nth-child(1) {
+        grid-column: span 1;
+    }
+
+    .bento-item:nth-child(2) {
+        grid-column: span 1;
+    }
+
+    .bento-item:nth-child(3) {
+        grid-column: span 2;
+    }
+
+    /* Fila 1 completa */
+
+    .bento-item:nth-child(4) {
+        grid-column: span 2;
+    }
+
+    .bento-item:nth-child(5) {
+        grid-column: span 1;
+    }
+
+    .bento-item:nth-child(6) {
+        grid-column: span 1;
+    }
+
+    /* Fila 2 completa */
+
+    .bento-item:nth-child(7) {
+        grid-column: span 2;
+    }
+
+    .bento-item:nth-child(8) {
+        grid-column: span 2;
+    }
+
+    /* Fila 3 completa */
+
+    .bento-fade {
+        height: 55%;
+    }
+
+    .bento-text {
+        margin-top: -150px;
+    }
+
+    .bento-text p {
+        font-size: 1.05rem;
+    }
+}
+
+/* 4. RESULTS CAROUSEL */
+.results-header h2 {
+    margin-bottom: 10px;
+}
+
+.results-header h3 {
+    color: var(--dark);
+    margin-top: 15px;
+}
+
+.swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 450px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.swiper-slide img,
+.swiper-slide video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 5. FAQ SECTION */
+@media (max-width: 767px) {
+    .faq {
+        padding-bottom: 280px; 
+    }
+
+    .faq-item {
+        text-align: center;
+    }
+
+    .faq-title {
+        text-align: center;
+    }
+
+    /* DRAGÓN CENTRADO Y ABAJO */
+    .dragon-bg {
+        display: block !important; 
+        position: absolute;
+        height: 380px; 
+        width: auto;
+        bottom: -120px; 
+        top: auto; 
+        
+        left: 50%; 
+        transform: translateX(-30%); 
+        
+        opacity: 1; 
+        z-index: 0;
+        pointer-events: none; 
+    }
+
+    .faq .container {
+        z-index: 2;
+        position: relative;
+    }
+}
+
+.relative-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-title {
+    margin-bottom: 40px;
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.faq-item h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* DRAGÓN PC */
+.dragon-bg {
+    position: absolute;
+    z-index: 1;
+    display: none;
+}
+
+/* 6. FOOTER */
+.footer {
+    position: relative;
+    background-color: var(--light);
+    text-align: center;
+    padding-bottom: 15vw;
+    overflow: hidden;
+}
+
+.footer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0;
+}
+
+.footer-info {
+    order: 1;
+    text-align: left;
+    width: 48%;
+    margin-bottom: 10px;
+}
+
+.footer-copy {
+    order: 2;
+    text-align: right;
+    width: 48%;
+    margin-bottom: 10px;
+}
+
+.footer-info p,
+.footer-copy p {
+    font-size: 0.6rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.form-wrapper {
+    order: 3;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    margin-bottom: -30px;
+}
+
+.form-container {
+    background: rgba(40, 40, 40, 0.65);
+    padding: 15px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    background-color: #f9f9f9;
+}
+
+.form-container .btn-dark {
+    padding: 12px 40px;
+    font-size: 0.95rem;
+}
+
+.form-disclaimer {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--dark);
+    margin-top: 15px;
+    line-height: 1.4;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.huge-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 32vw;
+    color: var(--pink);
+    line-height: 0.75;
+    letter-spacing: -2px;
+    z-index: 1;
+}
+
+/* --- ANIMACIONES DE SCROLL (MOTION EFFECTS) --- */
+.animate-fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+}
+
+.animate-fade-down {
+    opacity: 0;
+    transform: translateY(-40px);
+    transition: all 0.8s ease-out;
+}
+
+.animate-slide-left {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s ease-out;
+}
+
+.animate-slide-right {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease-out;
+}
+
+.in-view {
+    opacity: 1;
+    transform: translate(0) !important;
+}
+
+.delay-1 {
+    transition-delay: 0.2s;
+}
+
+.delay-2 {
+    transition-delay: 0.4s;
+}
+
+
+/* --- RESPONSIVE MEDIA QUERIES (DESKTOP) --- */
+@media (min-width: 768px) {
+
+    /* 1. HERO DESKTOP */
+    .mobile-break {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 20vw;
+    }
+
+    .hero-middle {
+        top: 30%;
+        left: 5%;
+        width: 90%;
+        padding: 0;
+        height: auto;
+        display: grid;
+        flex-direction: row;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 0;
+    }
+
+    .logo-col {
+        justify-content: flex-start;
+    }
+
+    .subtitle-col {
+        justify-content: flex-end;
+        align-self: unset;
+        margin-left: 0;
+    }
+
+    .hero-subtitle {
+        text-align: right;
+    }
+
+    .hero-bottom {
+        left: 0;
+        width: 100%;
+        padding: 0;
+        align-items: flex-end;
+    }
+
+    .pre-title {
+        margin-left: 0;
+        margin-right: 5%;
+        transform: translateY(-100px);
+    }
+
+    /* 2. ABOUT DESKTOP */
+    .layout-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+    }
+
+    .about-text {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    /* 3. SERVICES DESKTOP */
+    .services .layout-grid {
+        display: grid;
+        align-items: start;
+    }
+
+    .services-title {
+        order: 0;
+        text-align: left;
+    }
+
+    .services-text {
+        text-align: left;
+    }
+
+    .service-item ul {
+        display: block;
+    }
+
+    /* 4. GLÚTEOS DESKTOP */
+    .gluteos-container {
+        padding: 0 0 120px 0;
+        min-height: 1150px;
+    }
+
+    .gluteos-text {
+        width: 100%;
+    }
+
+    .sc-top {
+        width: 350px;
+        height: 200px;
+        border-radius: 15px;
+        transform: translate(-50%, calc(-50% - (380px * var(--scroll-p))));
+    }
+
+    .sc-left {
+        width: 230px;
+        height: 390px;
+        border-radius: 15px;
+        transform: translate(calc(-50% - (370px * var(--scroll-p))), -50%);
+    }
+
+    .sc-right {
+        width: 230px;
+        height: 390px;
+        border-radius: 15px;
+        transform: translate(calc(-50% + (370px * var(--scroll-p))), -50%);
+    }
+
+    .sc-bottom {
+        width: 370px;
+        height: 210px;
+        border-radius: 15px;
+        transform: translate(-50%, calc(-50% + (380px * var(--scroll-p))));
+    }
+
+    /* 5. FAQ DRAGON DESKTOP */
+    .faq-grid {
+        grid-template-columns: 1fr 1fr;
+        width: 75%;
+        gap: 40px;
+    }
+
+    .dragon-bg {
+        display: block;
+        width: 65vw;
+        max-width: 750px;
+        right: -15%;
+        bottom: -10%;
+        opacity: 1;
+    }
+
+    /* 6. FOOTER DESKTOP */
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        align-items: center;
+        gap: 60px;
+    }
+
+    .footer-info {
+        order: unset;
+        text-align: left;
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    .footer-copy {
+        order: unset;
+        text-align: right;
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    .footer-info p,
+    .footer-copy p {
+        font-size: 0.9rem;
+    }
+
+    .form-disclaimer {
+        font-size: 0.9rem;
+        max-width: 600px;
+    }
+
+    .form-wrapper {
+        order: unset;
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    .form-container {
+        padding: 30px;
+    }
+
+    .huge-text {
+        font-size: 20vw;
+        bottom: -2%;
+    }
+
+    .footer {
+        padding-bottom: 200px;
+    }
+}
+
+/* ==========================================================================
+   7. BOTONES FLOTANTES
+   ========================================================================== */
+.floating-buttons {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 9999;
+    /* Asegura que estén siempre por encima de todo */
+}
+
+.float-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* botón Instagram */
+.ig-btn {
+    background-color: var(--dark);
+    border: 2px solid var(--pink);
+    color: var(--pink);
+    /* Esto pinta el ícono SVG de rosa */
+    text-decoration: none;
+}
+
+/* botón de volver arriba  */
+.top-btn {
+    background-color: var(--dark);
+    border: 2px solid var(--pink);
+    color: var(--pink);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+.top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.float-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Ajuste para celulares */
+@media (max-width: 767px) {
+    .floating-buttons {
+        bottom: 20px;
+        right: 20px;
+        gap: 10px;
+    }
+
+    .float-btn {
+        width: 50px;
+        height: 50px;
+    }
+}
